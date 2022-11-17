@@ -1,9 +1,23 @@
+-- INNER JOIN --
+SELECT p.Name, s.Date AS "Sale Date"
+FROM products AS p
+INNER JOIN sales AS s
+ON p.ProductID = s.ProductID;
+
+-- LEFT JOIN --
+SELECT e.FirstName AS "First Name", e.LastName AS "Last Name", s.Date AS "Sale Date", s.Quantity AS "Quantity Sold"
+FROM sales AS s
+LEFT JOIN employees AS e
+ON e.EmployeeID = s.EmployeeID
+ORDER BY e.FirstName;
+
 /* joins: select all the computers from the products table:
 using the products table and the categories table, return the product name and the category name */
  SELECT P.Name AS "Product Name", C.Name AS "Category Name" 
  FROM products as P
  INNER JOIN categories AS C 
- ON P.CategoryID = 1 AND C.CategoryID = 1;
+ ON P.CategoryID = C.CategoryID
+ WHERE C.Name = "Computers";
  
 /* joins: find all product names, product prices, and products ratings that have a rating of 5 */
  Select P.Name AS "Product Name", P.Price, R.Rating
